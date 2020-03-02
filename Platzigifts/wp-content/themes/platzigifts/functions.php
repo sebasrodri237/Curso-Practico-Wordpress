@@ -12,7 +12,8 @@ function init_template(){
 add_action( 'after_setup_theme', 'init_template');
 // Cuando alguien ingrese al sitio WP elige el tema y ejecute las opciones
 
-function assets(){// Forma de manejo de librerias en las que se cargaran como dependencias 
+function assets(){// Forma de manejo de librerias en las que se cargaran como dependencias, primero por el orden en el array y luego por el
+    //orden del enqueue 
 //CSS
     // Estas dependencias antes que nuestra hoja de estilos pero no las inicializara dentro del navegador
     // en este caso bootstrap y una fuente
