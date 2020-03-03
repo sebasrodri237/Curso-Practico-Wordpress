@@ -7,6 +7,12 @@ function init_template(){
     // Esta funcionalidad permite en nuestra entrada agregar una imagen destacada
     add_theme_support('titletag');
     // Imprime en el header el titulo de la pagina
+    //Registrar localización del menu en el menu Wp --> apariencia
+    register_nav_menus( 
+        array(
+            'top_menu' => 'Menú Principal'
+        )
+    );
 }
 // Esto es un hook
 add_action( 'after_setup_theme', 'init_template');
@@ -37,3 +43,21 @@ function assets(){// Forma de manejo de librerias en las que se cargaran como de
 }
 
 add_action( 'wp_enqueue_scripts', 'assets');
+
+//Creamos la localizacion/rregistro del widget y caracteristicas
+function sidebar(){
+
+    register_sidebar(
+        array(
+         'name' => 'pie de pagina',
+         'id' => 'footer',
+         'description' => 'zona de wigets para pie de pagina',
+         'before_title' => '<p>',
+         'after_title' => '</p>',
+         'before_widget' => '<div id="%1$s" class="%2$s">',
+         'after_widget' => '</div>'
+        )
+    );
+}
+//Inicializar en WP el registro anterior
+add_action('widgets_init', 'sidebar');
